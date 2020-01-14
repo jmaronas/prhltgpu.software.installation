@@ -34,7 +34,7 @@ In the examples folder you can find  how you can install different softwares for
 * kaldi with gpu
 * java
 
-**Note:** If you wish to provide examples of other softwares within our framework make a pull request. 
+**Note:** If you wish to provide examples of other softwares within our framework make a pull request.  This could be the case of **PyLaia**, **P2PALA** and **EDDL**.
 
 
 ## Linux Installation
