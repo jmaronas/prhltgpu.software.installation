@@ -1,5 +1,5 @@
 # SOFTWARE INSTALLATION FOR MACHINE LEARNING
-**Author**: Juan Maroñas Molano
+**Author**: Juan Maroñas Molano (jmaronasm@gmail.com) (jmaronas@prhlt.upv.es)
 
 **Date**: 14-01-2020
 
