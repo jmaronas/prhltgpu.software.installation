@@ -103,7 +103,7 @@ An **incorrect** sequence could be:
 
 * ```./install.sh```
 * ```./update_21032020.sh```
-*  ```./update_21032019.sh```
+* ```./update_21032019.sh```
 
 
 ## Some Advices
@@ -131,6 +131,34 @@ Disable secure boot in the bios is important for remote managment. This is becau
 I will add how to mount another HDD as a data partition
 
 ### Wake up online
-
 How to wake up your computer from remote. Two options are here. When the computer has been shut down, and when the computer has been shutdown and the current has been cut (for instance if you plug off the power-supply wire). This is configured in bios plus a script
+
+### Configure daemon
+How to configure a daemon that monitor, for instance, the temperature of several machines.
+
+## Management Utils
+
+I also provide some utils I use to manage the machines. This is based on the use of ```dsh```command. This files can be found in ```./utils/```.  Previous to run the files you must create a file named ```gpu_machines.lst```. This file must contain the full ip direction of the machine you want to connect to. See file ```gpu_machines.lst```  provided in the repository (the ips are invented). 
+
+Also you must configure the ssh public and private keys from host and remote machine so that no password is required when log into a specific machine.  A guide is provided [here.](https://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/)
+
+Different functionalities are provided:
+
+* ```get_unique_users_in_machines.sh```: By running this file you get all the users that have, at least, one account in the machines. 
+* ```check_disk_space_of_user_per_gpu.sh```: By running this file you get the amount of disk memory of each user in each GPU.
+* ```check_failed_GPU_drivers.sh```: By running this file you get which drivers are not properly installed in the machines.
+* ```check_users_per_gpu.sh``` By running this file you get the users in each GPU.
+* ```check_gpus_per_user_scriptNUMBER.sh```. This script is divided in two scripts. You run only once the script where NUMBER=1. Then, to check for each specific user, you run the script where NUMBER=2 plus the name of the user you want to check. This will return the gpus ID assigned to that user. For instance.
+	 ```./check_gpus_per_user_script1.sh```
+	 ```./check_gpus_per_user_script2.sh jmaronasm```
+	 ```./check_gpus_per_user_script2.sh rparedes```
+	 ```./check_gpus_per_user_script2.sh maparla```
+* ```filter_users_by_time.py: ```Before running this file you must run ```check_users_per_gpu.sh```. This file is used to check for accounts that has not been used during a period of time. You must open the file and specify the current month and year, and the period of time (in number of months). The file returns the user and the GPU in which there is an account not used during the specified period of time.
+
+## Acknowledgment
+
+I will like to acknowledge the support of Lorenzo Quiros, Mario Parreño, Jose Prieto and Miguel Dominguez in  many aspects of the PRHLTGPU managment. 
+
+
+
 
