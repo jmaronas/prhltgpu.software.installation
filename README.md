@@ -10,7 +10,7 @@ This is a file describing the repository of installation of the PRHLTGPUs. This 
 
 The repository has been partially uploaded to Github. Here I only upload the README file explaining how things are done and some software installation examples, within the current installation framework.  If you wish to have access to all the necessary files (software and installation scripts), please send me an email.  If you wish to add an example on how to install any toolkit, within the current installation framework, make a pull request. 
 
-Up to this moment, I used to install many machine learning softwares to be used by all the users (such as Kaldi). However, this is time consuming if we take into account how much of this software is then used. For that reason, I just now provide  support for python3.x, cuda>10 , cudnn, linux libraries and some more things. For a description on the software installed by using this repository, please see the pdf file here. PONER ENLACE. For examples on how to install typicall machine learning toolkits, please see section **2.1 EXAMPLES** in this README file.
+Up to this moment, I used to install many machine learning softwares to be used by all the users (such as Kaldi). However, this is time consuming if we take into account how much of this software is then used. For that reason, I just now provide  support for python3.x, cuda>10 , cudnn, linux libraries and some more things. For a description on the software installed by using this repository, please see the pdf file [here](https://github.com/jmaronas/prhltgpu.software.installation/blob/master/maquinas_prhlt_version_github.pdf). For examples on how to install typicall machine learning toolkits, please see section **2.1 EXAMPLES** in this README file.
 
 For the PRHLT members, the rest of information: accounts distribution and so on can be found in the intranet as always.
 
@@ -150,7 +150,7 @@ This will allow you to create update files for your current machines and, by run
 
 ## 2.1 Examples
 
-Once you have installed your enviroment, which will install many of the tools needed for machine learning softwares, I provide an example on how to install many of the softwares.  I also provide some types on how to proceed. For instance in torch I found that the installation changed when compiling against cuda 9 instead of cuda 8. You can find them in the examples folder PONER ENLACE of **this public repository**. 
+Once you have installed your enviroment, which will install many of the tools needed for machine learning softwares, I provide an example on how to install many of the softwares.  I also provide some types on how to proceed. For instance in torch I found that the installation changed when compiling against cuda 9 instead of cuda 8. You can find them in the [examples folder](https://github.com/jmaronas/prhltgpu.software.installation/tree/master/examples) of **this public repository**. 
 
 In the examples folder you can find  how to install the following softwares withing the  PRHLTGPU software configuration:
 
@@ -164,7 +164,7 @@ In the examples folder you can find  how to install the following softwares with
 * opencv
 * java
 
-**Note:** If you wish to provide examples on how to install  other software within our framework, make a pull request.  This could be the case of **PyLaia**, **P2PALA**, **OpenMP** and **EDDL**. 
+**Note:** If you wish to provide examples on how to install  other software within our framework, make a pull request.  This could be the case of **PyLaia**, **P2PALA**, **OpenNMT** and **EDDL**. 
 
 **Note:** I will only be updating the files of the softwares that I use. This means that **updates/suggestions over the provided files are VERY welcome!!**. 
 
@@ -172,7 +172,7 @@ In the examples folder you can find  how to install the following softwares with
 
 In this last section I provide some utils on how you can manage several machines using the `dsh` command. These files can be found in the `./utils/` after requesting the respository. 
 
- Previous to run the files you must create a file named `gpu_machines.lst`. This file must contain the full ip direction of the machine you want to connect to. See file `gpu_machines.lst`  provided in this PONER ENLACE AQUI public repository (the ips are invented), . 
+ Previous to run the files you must create a file named `gpu_machines.lst`. This file must contain the full ip direction of the machine you want to connect to. See file `gpu_machines.lst`  provided in this [public repository](https://github.com/jmaronas/prhltgpu.software.installation/blob/master/gpu_machines.lst) (the ips are invented), . 
 
 Also you must configure the ssh public and private keys from host and remote machine so that no password is required when log into a specific machine.  A guide is provided [here.](https://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/) If you are able to log into your machine without being asked the password, then you have configure it correctly. You should also need to configure the machines in a way that when typing sudo, you the passwords is not requested, see section **2. Software Installation**.
 
