@@ -1,5 +1,6 @@
 ## Author: Juan Maroñas Molano
-## Example on how to install opencv.
+## Example on how to install opencv. NOT UPDATE ANYMORE
+## This installation file was checked on January 2020
 
 INSTALL_DIR=$HOME"/opencv/"
 cd /tmp/

@@ -1,6 +1,7 @@
 ## Author: Juan Maroñas Molano
 ## Example on how to install torch for gpu with Joan's package: Laia. NOT UPDATED ANYMORE!!
-# I provide and example in cuda 8 and 9 as by the time of installing torch there was a bug solved in this way. Hope this is enough by the time you use this script.
+# I provide and example in cuda 8 and 9 as by the time of installing torch there was a bug solved in this way. Hope this is enough by the time you use this script. I think that Laia has a dependency that only allows to use cudnn5. This means that it will probably not compile against newer versions of cuda anymore.
+## This installation file was checked on May 2018
 
 #cuda 8 
 rm /usr/local/cuda
