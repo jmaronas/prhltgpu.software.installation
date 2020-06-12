@@ -110,8 +110,9 @@ To update to a new ubuntu version here are the steps:
 * ``` sudo reboot ```
 * ``` sudo do-release-upgrade ``` 
 	* **NOTE** Sometimes it is required to set the option development `sudo do-release-upgrade -d` to install the last LTS. This is the case of ubuntu20 in June 2020. Perhaps this is because as the new ubuntu 20 LTS is recent it hasnt been added to the normal release-upgrade mode.
-* ``` sudo apt-get update ```
-* ``` sudo apt-get upgrade ```
+* Disable nouveau drivers again. Follow step **1.3.1 Disable nouveau drivers** above.
+* Reinstall Nvidia driver
+* Reinstall whatever you want to reinstall (for example other versions of python)
 
 
 ## 2. Software Installation.
