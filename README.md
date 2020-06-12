@@ -4,7 +4,7 @@
 
 **Author**: Juan Maroñas Molano (jmaronasm@gmail.com) (jmaronas@prhlt.upv.es) (maquinas.prhlt@gmail.com)
 
-**Date**: 14-01-2020
+**Date**: 12-06-2020
 
 This is a file describing the repository of installation of the PRHLTGPUs. This is a new repository, building up from the previous one. I have basically erase some unuseful files in order to lighten the repository. This way of working with the PRHLTGPUS started on 2nd March 2018.
 
@@ -96,6 +96,22 @@ How to wake up your computer from remote. Two options are here. When the compute
 
 #### 1.3.5 Configure daemon
 How to configure a daemon that monitor, for instance, the temperature of several machines using `dsh`
+
+### 1.4 Update Ubuntu version
+
+To update to a new ubuntu version here are the steps:
+
+* Uninstall drivers
+* Deactivate users from log in
+* ```sudo apt update``` 
+* ```sudo apt upgrade -y``` 
+* ```sudo apt --purge autoremove``` (ubuntu 18 and later) 
+* ``` sudo apt-get dist-upgrade ``` (sometimes)
+* ``` sudo reboot ```
+* ``` sudo do-release-upgrade ```
+* ``` sudo apt-get update ```
+* ``` sudo apt-get upgrade ```
+
 
 ## 2. Software Installation.
 
@@ -189,6 +205,12 @@ Different functionalities are provided. The idea is to run these utilities from 
 	 ```./check_gpus_per_user_script2.sh maparla```
 * ```filter_users_by_time.py: ```Before running this file you must run ```check_users_per_gpu.sh```. This file is used to check for accounts that has not been used during a period of time. You must open the file and specify the current month and year, and the period of time (in number of months). The file returns the user and the GPU in which there is an account not used during the specified period of time.
 * ```gpu_install_drivers.sh``` This file installs the drivers if they are corrupted. 
+* ```get_inactive_accounts.sh``` This file checks (in a very hacky way) if a user has used his account at some point. 
+
+* To restrict temporal access to a user run: ``` sudo usermod --expiredate 1 $username ```
+* To reactivate an account run: ``` sudo usermod --expiredate "" $username ```
+* To allow a non-root user to use docker you have to first create the docker group running: ```  sudo groupadd docker ```
+	* Then each user is added with  ```sudo usermod -aG docker [non-root username]``` 	 
 
 **IMPORTANTE NOT:**  It is interesting to remark that if you modify my installation scripts so no interaction is requried (for instance to provide the installation path), then you can run the `dsh` command to install all the machines from your host, i.e. there is no need to log in separately to each of the machines. The command would be something like:
 
@@ -199,5 +221,9 @@ With only this line you install all the machines listed in the `gpu_machines.lst
 ## Acknowledgment
 
 I will like to acknowledge the support of Lorenzo Quiros, Mario Parreño, Jose Prieto and Miguel Dominguez in  many aspects of the PRHLTGPU managment.
+
+## TODO
+
+* [ ] Add an example on how to run Jupyters on the PRHLT gpu machines. 
 
 
