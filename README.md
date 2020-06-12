@@ -106,9 +106,10 @@ To update to a new ubuntu version here are the steps:
 * ```sudo apt update``` 
 * ```sudo apt upgrade -y``` 
 * ```sudo apt --purge autoremove``` (ubuntu 18 and later) 
-* ``` sudo apt-get dist-upgrade ``` (sometimes)
+* ``` sudo apt-get dist-upgrade ``` 
 * ``` sudo reboot ```
-* ``` sudo do-release-upgrade ```
+* ``` sudo do-release-upgrade ``` 
+	* **NOTE** Sometimes it is required to set the option development `sudo do-release-upgrade -d` to install the last LTS. This is the case of ubuntu20 in June 2020. Perhaps this is because as the new ubuntu 20 LTS is recent it hasnt been added to the normal release-upgrade mode.
 * ``` sudo apt-get update ```
 * ``` sudo apt-get upgrade ```
 
