@@ -4,7 +4,7 @@
 
 **Author**: Juan Maroñas Molano (jmaronasm@gmail.com) (jmaronas@prhlt.upv.es) (maquinas.prhlt@gmail.com)
 
-**Date**: 12-06-2020
+**Date**: 06-07-2020
 
 This is a file describing the repository of installation of the PRHLTGPUs. This is a new repository, building up from the previous one. I have basically erase some unuseful files in order to lighten the repository. This way of working with the PRHLTGPUS started on 2nd March 2018.
 
@@ -30,7 +30,9 @@ This is the installation process you can follow in order to set up your machines
 
 ## 1. Linux Installation
 
-On each of the different machines you first have to install linux. To use the current set of files you must install the last ubuntu 16 LTS release (this will be updated soon to ubuntu 18). In a linux machine you can find several options:
+On each of the different machines you first have to install linux. To use the current set of files you must install the last ubuntu 20 LTS release. Before proceeding briefly read section 1.5.
+
+In a linux machine you can find several options:
 
 
 1. Only one hard drive
@@ -113,6 +115,21 @@ To update to a new ubuntu version here are the steps:
 * Disable nouveau drivers again. Follow step **1.3.1 Disable nouveau drivers** above.
 * Reinstall Nvidia driver
 * Reinstall whatever you want to reinstall (for example other versions of python)
+* Merge the previous install and update files into a new install file that can be used on any new machine that is added your cluster. Read section 1.5 for instructions on what to take in consideration to create a similar installation.
+
+### 1.5 Installing new machines after OS update
+
+If there is any problem when updating a machine, or a new machine arrives it should be directly installed with ubuntu 20. There is no sense to install ubuntu16 and then proceed with the installation scripts and upgrade. To install any new machines as the updated ones you should do the following steps:
+
+*  run: ` sudo apt list --installed | awk -F/ -v ORS=" " 'NR>1 {print $1}' > completePackage.txt`
+* Merge the install and update bash files and create a new install file that will install everything as in the updated machines. To do so:
+  * This file will first add all the ppas that were added to the machines. This can be easily obtained from the previous install and update files
+  * Install all the libraries and previous packages. This can be done thorough `apt-get install -y < completePackage.txt` 
+    * Note that you may need to remove packages from the completePackage.txt list because they are not available anymore for ubuntu20, hence they have to be build from source or by any other alternative. In my case, I remove any conflictive package and just install it if requested by any user. This has been the case of gcc-4.9 which is not available in ubuntu20.
+  * Install any other third party software like nvidia drivers, cudnn and so on
+* **Note:** These advices appear here just in case they are needed. Normally, the provided scripts will already have this set of commands added, but just in case you want to now how to do it here are the steps I followed. It is important to do this as you may have, e.g, the compiler gcc installed in many versions, but if you install gcc in the new machine through ` apt-get install gcc` it will only install the last version available, and not all the versions that might have been installed within the different updates done in the machines through the years. This means that if a user is using an older version from the compiler, it would not be able to run the software unless the configuration is replicated exactly.
+
+
 
 
 ## 2. Software Installation.
