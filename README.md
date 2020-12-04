@@ -4,15 +4,19 @@
 
 **Author**: Juan Maroñas Molano (jmaronasm@gmail.com) (jmaronas@prhlt.upv.es) (maquinas.prhlt@gmail.com)
 
-**Date**: 06-07-2020
+**Date**: 04-12-2020
 
 This is a file describing the repository of installation of the PRHLTGPUs. This is a new repository, building up from the previous one. I have basically erase some unuseful files in order to lighten the repository. This way of working with the PRHLTGPUS started on 2nd March 2018.
 
 The repository has been partially uploaded to Github. Here I only upload the README file explaining how things are done and some software installation examples, within the current installation framework.  If you wish to have access to all the necessary files (software and installation scripts), please send me an email.  If you wish to add an example on how to install any toolkit, within the current installation framework, make a pull request. 
 
-Up to this moment, I used to install many machine learning softwares to be used by all the users (such as Kaldi). However, this is time consuming if we take into account how much of this software is then used. For that reason, I just now provide  support for python3.x, cuda>10 , cudnn, linux libraries and some more things. For a description on the software installed by using this repository, please see the pdf file [here](https://github.com/jmaronas/prhltgpu.software.installation/blob/master/maquinas_prhlt_version_github.pdf). For examples on how to install typicall machine learning toolkits, please see section **2.1 EXAMPLES** in this README file.
+Up to this moment, I used to install many machine learning software to be used by all the users (such as Kaldi). However, this is time consuming if we take into account how much of this software is then used. For that reason, I just now provide  support for python3.x, cuda>10 , cudnn, linux libraries and some more things. For a description on the software installed by using this repository, please see the pdf file [here](https://github.com/jmaronas/prhltgpu.software.installation/blob/master/maquinas_prhlt_version_github.pdf). For examples on how to install typicall machine learning toolkits, please see section **2.1 EXAMPLES** in this README file.
 
 For the PRHLT members, the rest of information: accounts distribution and so on can be found in the intranet as always.
+
+In file named **completePackage.txt** in this repository, you can find all the dependencies and programs installed in the machines. To install this in your computer just run: `apt-get install -y < completePackage.txt`
+
+Note that the information displayed in this repository can be used to set up machines that will later use SLURM manager as example. This repository just shows how to install and set up machines and additionally provides (request by email) scripts to monitor users in each machine (which can be useful if you cant set up slurm because your machines cannot be connected through a high speed internet link.)
 
 
 
@@ -66,6 +70,10 @@ In (at least one of) the HDD drive:
 **Note:**  If the computer has more than one HDD drive, this could be use as a /data partition. I will provide instructions on how to do this also, but not yet.
 
 **Once installed**: After a machine is installed please type `sudo apt-get install openssh-server git`. Once you have install `ssh` and `git`, place the machine where you want, but make sure it is connected to the internet, and with an IP assigned. Install all the machines you want to set up.
+
+### IMPORTANT UPDATE
+
+As I mention above, for options 1 and 4 I recommend not doing the partitions. However my experience has shown me that even in the case where you only have one HDD in your system, it is recommended to keep the /home/ in a different partition to the rest of the system. In this case if your OS gets corrupted for whatever reason (a light cut for example), you can just reinstall ubuntu on the system partition without affecting the data from the users in the machines. In this way you wont have to remove the HDD from the machine, manually plug in into a different machine, and take the data from each of the users that might need it..
 
 ### 1.3 Some Linux installation Advices
 
@@ -182,6 +190,13 @@ An **incorrect** sequence could be:
 This will allow you to create update files for your current machines and, by running the `install.sh` file followed by the `update_dat.sh` files you can install new machines without the need of creating a different `install.sh` file.
 
 **Example** To motivate this way of installing things, consider the following example. You have installed cuda8 in your machines. After one year, you update your machines and add also cuda 9 and cuda10. After one more year, you decide to erase cuda 8. One year later, a set of ten new machines comes to your lab, and you want them to have exactly the same software as the others. Instead of creating a new file that installs only cuda 9 and 10, you can run all the files in order. The first file will install cuda 8, and the updates files will erase it and install cuda 9. This helps a lot in setting up machines quickly. However, I recommend, each year, to merge the `install.sh` and `update_date.sh` files and create a new `install.sh` file, to avoid running several scripts that install and uninstall software. 
+
+#### TIPS
+
+* Since December 2020, Nvidia provides a nice interface to install cuda. It allows to install many things like drivers, samples, cuda library etc. My recommendation is only installing the cuda library and install the drivers separately.
+* Since December 2020, when I come to a new update I just install the last stable version of cuda and cudnn. I used to install everything but this is not really useful unless anyone needs a specific version of CUDA, which is not the usual case.
+* Cuda installer usually set a symbolic link from the cuda version to `$dir/cuda/`. If you have several cuda installed in your machines they cannot all point to  `$dir/cuda/`. As a consequence I recommend removing this option from the installer. If you then need to create the link for any reason, just type `sudo ln -s /usr/local/cuda11.0/ /usr/local/cuda/` 
+* After each update I recommend generating the `completePackages.txt`. In case you have a new machine coming just use it for installing all the packages. In the past I used to perform the set of operations described in section 2. However after updating to UBUNTU 20 I just create this file that will be installed through the `install.sh` file. Note that as this `completePackage.txt` file will list packages installed through the subsequent updates, when running the bash update files, these files will just ignore this new packages as they are already installed. You can choose anyway to keep the original file and just subsequently run all the bash update files. As you prefer!
 
 ## 2.1 Examples
 
