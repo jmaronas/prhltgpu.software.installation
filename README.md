@@ -137,7 +137,8 @@ If there is any problem when updating a machine, or a new machine arrives it sho
   * Install any other third party software like nvidia drivers, cudnn and so on
 * **Note:** These advices appear here just in case they are needed. Normally, the provided scripts will already have this set of commands added, but just in case you want to now how to do it here are the steps I followed. It is important to do this as you may have, e.g, the compiler gcc installed in many versions, but if you install gcc in the new machine through ` apt-get install gcc` it will only install the last version available, and not all the versions that might have been installed within the different updates done in the machines through the years. This means that if a user is using an older version from the compiler, it would not be able to run the software unless the configuration is replicated exactly.
 
-
+### 1.6 Creating additional swap space
+If you need to create additional swap space, this can be done through: http://www.linuxandubuntu.com/home/how-to-create-or-increase-swap-space-in-linux
 
 
 ## 2. Software Installation.
